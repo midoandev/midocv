@@ -69,14 +69,14 @@ class LearnSomething extends Component {
     let st = this.state
     return (
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor: '#eee'}} ref={ref => this.listViewRef = ref}>
-        <View style={{flex:1, minHeight: height}}>
-          <View style={{ width,height:height, flex:1, position:'absolute', justifyContent: 'center', alignItems: 'center', opacity:.1}}>
+        <View style={{minHeight: height}}>
+          <View style={{ width, height, flex:1, position:'absolute', justifyContent: 'center', alignItems: 'center', opacity:.1}}>
             <MobileExpletion />
           </View>
           
-          <View style={{flexDirection: 'row', justifyContent:'space-between', paddingHorizontal:24, marginTop:16, alignItems: 'center', flex:1}}>
+          <View style={{flexDirection: 'row', justifyContent:'space-between', paddingHorizontal:24, marginTop:16, alignItems: 'center' }}>
               <Logoarm/>
-              <View style={{ flexDirection: 'row', justifyContent:'center',   }}> 
+              <View style={{ flexDirection: 'row', justifyContent:'center',  }}> 
           
                   <TouchableOpacity disabled={st.tab==0}
                     onPress={() => {
@@ -102,10 +102,10 @@ class LearnSomething extends Component {
               </View>
           </View>
           
-          <View style={{alignItems:'center', justifyContent: 'center', minHeight:600, paddingHorizontal: 16}}>
-            <View style={{ alignItems: 'center', marginBottom:60 }}>
-              <Text style={{fontWeight: '500', fontSize: 26, lineHeight:32, marginBottom:8, textAlign: 'center', marginBottom:16}}>{tr().t('title1')}</Text>
-              <Text style={{fontWeight: '400', fontSize: 20, lineHeight:22, letterSpacing:.7, textAlign: 'center'}}>{tr().t('title2')}</Text>
+          <View style={{alignItems:'center', justifyContent: 'center', flex:1,paddingHorizontal: 16}}>
+            <View style={{ alignItems: 'center', marginBottom:80 }}>
+              <Text style={{fontWeight: '500', fontSize: 26, lineHeight:32, margin:16, textAlign: 'center', marginBottom:16}}>{tr().t('title1')}</Text>
+              <Text style={{fontWeight: '400', fontSize: 20, lineHeight:22, marginHorizontal:16,letterSpacing:.7, textAlign: 'center'}}>{tr().t('title2')}</Text>
             </View>
             <Image
               resizeMode={'contain'}
@@ -155,7 +155,7 @@ class LearnSomething extends Component {
           {st.recent.map((item, index) => 
             <View key={index} 
               style={[Css.LayoutShadow, {alignItems: 'center', 
-              width: 320, height: 360, justifyContent: 'center', margin:8}]}>
+              width: 320, height: 360, justifyContent: 'center', margin:16}]}>
               <Image
                 resizeMode={'contain'}
                 style={{width: 100,height: 100, alignItems:'center', marginVertical:22,}}
@@ -211,11 +211,13 @@ class LearnSomething extends Component {
           </View>
           <View style={{flexDirection: 'row',alignItems:'center', justifyContent: 'center', padding:12}}>
             <Text style={{fontWeight: '600', letterSpacing:1, opacity:.7, fontSize: 12}}>Made me </Text> 
-            <Image
-              resizeMode={'contain'}
-              style={{width: 48,height: 22, alignItems:'center', marginLeft:6 }}
-              source={require('../assets/expoicon.png')}
-            />
+            <TouchableOpacity onPress={() => Linking.openURL('https://expo.dev/')}>
+              <Image
+                resizeMode={'contain'}
+                style={{width: 48,height: 22, alignItems:'center', marginLeft:6 }}
+                source={require('../assets/expoicon.png')}
+              />
+            </TouchableOpacity>
           </View>
         </View> 
       </ScrollView>
