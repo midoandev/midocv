@@ -1,20 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
-import ViewOnMobile from './src/ViewOnMobile';
-import ViewOnWeb from './src/ViewOnWeb';
-
+import LearnSomething from './src/LearnSomething';
+// import ViewOnMobile from './src/ViewOnMobile';
+// import ViewOnWeb from './src/ViewOnWeb'; 
 export default function App() {
-  if (Platform.OS === 'web'){
-    return (
-      <ViewOnMobile/>
-    );
-  } else {
-    return (
-      <ViewOnWeb/>
-    );
-
-  }
+  return <LearnSomething/>
 }
 
 const styles = StyleSheet.create({
@@ -25,3 +16,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+  // if (Platform.OS === 'web'){
+  //   return (
+  //     <ViewOnMobile/>
+  //   );
+  // } else {
+  //   return (
+  //     <ViewOnWeb/>
+  //   );
+
+  // }
