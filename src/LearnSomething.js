@@ -145,7 +145,7 @@ class LearnSomething extends Component {
           } 
         />  
 
-        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical:40}}>
+        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical:40, marginTop: -20}}>
           <View style={{flexDirection: 'row', alignItems:'center', justifyContent: 'center', opacity:.7}}>
             <Text style={{fontWeight: '300', letterSpacing:1, fontSize:14}}>Handcrafted by me </Text> 
             <FontAwesome5 name={'copyright'} size={14} color={'#B42929'}/>
@@ -160,6 +160,7 @@ class LearnSomething extends Component {
             />
           </View>
         </View>
+        <Text>test</Text>
       </ScrollView>
     );
   }
