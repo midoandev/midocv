@@ -160,7 +160,7 @@ class LearnSomething extends Component {
             />
           </View>
         </View>
-        <Text>test</Text>
+        <Text>testdasdasda</Text>
       </ScrollView>
     );
   }
