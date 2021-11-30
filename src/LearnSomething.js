@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, Dimensions, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, Linking } from 'react-native'; 
 import Css from './Css';
 import {tr} from "./Helper";
-import { IconMe, IconPortopolio, Logoarm, MobileExpletion } from './SVGHelp';
+import { IconMe, IconPortopolio, IconSkilss, Logoarm, MobileExpletion } from './SVGHelp';
 const {width, height} = Dimensions.get('window')
 import { Feather, FontAwesome5, Ionicons, Fontisto } from "@expo/vector-icons";
 
@@ -84,9 +84,15 @@ class LearnSomething extends Component {
           <Text style={{fontWeight: '400', fontSize: 18, lineHeight:30, textAlign: 'center', color: '#fff', paddingHorizontal:60}}>{tr().t('desc')}</Text>
         </View>
 
+        {/* <View style={{flex:1, alignItems: 'center', justifyContent: 'center', paddingVertical:80}}>
+          <IconSkilss/>
+          <Text style={{fontWeight: '500', fontSize: 24, lineHeight:32, marginTop:16, letterSpacing:1, marginBottom:24, textAlign: 'center'}}>{tr().t('skills')}</Text>
+        </View> */}
+
+
         <View style={{flex:1, alignItems: 'center', justifyContent: 'center', paddingVertical:80}}>
           <IconPortopolio/>
-          <Text style={{fontWeight: '500', fontSize: 24, lineHeight:32, marginTop:16, letterSpacing:1, marginBottom:24, textAlign: 'center'}}>{tr().t('PORTOFOLIO')}</Text>
+          <Text style={{fontWeight: '500', fontSize: 24, lineHeight:32, marginTop:16, letterSpacing:1, marginBottom:24, textAlign: 'center'}}>{tr().t('Portofolio')}</Text>
         </View>
 
         <FlatList
@@ -97,7 +103,7 @@ class LearnSomething extends Component {
           renderItem={({item, index}) =>  
             <View key={index} 
               style={[Css.LayoutShadow, {backgroundColor: '#fff', borderRadius:8, alignItems: 'center', 
-                marginHorizontal:12, marginBottom:24, width: 350, height: 350, justifyContent: 'center'}]}>
+                marginHorizontal:12, marginBottom:24, width: 350, height: 300, justifyContent: 'center'}]}>
               <Image
                 resizeMode={'contain'}
                 style={{width: 120,height: 120, alignItems:'center', marginBottom:16,}}
@@ -120,7 +126,7 @@ class LearnSomething extends Component {
               </View>
             </View>
           } 
-        />  
+        /> 
 
 
         <FlatList
