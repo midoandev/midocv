@@ -22,11 +22,20 @@ class LearnSomething extends Component {
           // {name: '+6282248012727',icon:'phone-call', link: 'https://wa.me/6282248012727'}, 
         ],
         recent: [
-          {name: 'Paketindo', desc: '', path: require('../assets/paketindo.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindo', ios: 'https://apps.apple.com/id/app/paketindo/id1573115358?l=id'},
-          {name: 'Nakula Paketindo', desc: '', path: require('../assets/nakula.png'), and: 'https://play.google.com/store/apps/details?id=com.nakulapaketindo', ios: 'https://apps.apple.com/id/app/nakula-paketindo/id1589885237'},
-          {name: 'Relasi Paketindo', desc: '', path: require('../assets/rm.png'), and: 'https://play.google.com/store/apps/details?id=com.rmclient', ios: 'https://apps.apple.com/id/app/relasi-paketindo/id1567033846'},
-          {name: 'Agen Paketindo', desc: '', path: require('../assets/agent.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindokuriragen', ios: ''},
-          {name: 'Droppoint Paketindo', desc: '', path: require('../assets/dp.png'), and: 'https://play.google.com/store/apps/details?id=com.pektindokurirdroppoint', ios: ''},
+          {name: 'Paketindo', desc: '', path: require('../assets/paketindo.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindo', ios: 'https://apps.apple.com/id/app/paketindo/id1573115358?l=id', 
+            doc: 'Aplikasi dibidang pengiriman paket, aplikasi untuk pengguna memiliki fitur pengiriman reguler dan pengiriman instant dengan memanfaatkan lokasi secara realtime'},
+          {name: 'Nakula Paketindo', desc: '', path: require('../assets/nakula.png'), and: 'https://play.google.com/store/apps/details?id=com.nakulapaketindo', ios: 'https://apps.apple.com/id/app/nakula-paketindo/id1589885237',
+            doc: 'Aplikasi driver untuk melakukan pengiriman paket secara instant, memiliki fitur lokasi realtime, chat dengan pengguna, dan lainnya.'},
+          {name: 'Relasi Paketindo', desc: '', path: require('../assets/rm.png'), and: 'https://play.google.com/store/apps/details?id=com.rmclient', ios: 'https://apps.apple.com/id/app/relasi-paketindo/id1567033846',
+            doc: 'Aplikasi yang berperan membantu marketing Paketindo untuk menarik relasi untuk bekerja sama dengan Paketindo. Memiliki fitur membuat paket reguler, menambahkan agens/mitra/merchants/clients'},
+          {name: 'Agen Paketindo', desc: '', path: require('../assets/agent.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindokuriragen', ios: '', 
+            doc: 'Aplikasi sub Paketindo pada level Agen, mengoperasikan pengiriman reguler, memiliki kurir pada setiap agen dan dapat mengambil paket dari permintaan pengguna.'},
+          {name: 'Droppoint Paketindo', desc: '', path: require('../assets/dp.png'), and: 'https://play.google.com/store/apps/details?id=com.pektindokurirdroppoint', ios: '',
+           doc: 'Aplikasi sub Paketindo pada level Droppoint, mengoperasikan pengiriman reguler, memiliki kurir pada setiap droppoint dan dapat mengakses paket dari permintaan droppoint, agen dan pengguna.'},
+          {name: 'Pasarindo', desc: '', path: require('../assets/pasar.png'), and: 'https://play.google.com/store/apps/details?id=com.pasarindoapp', ios: '',
+          doc: 'Aplikasi E-commerce yang berpusat pada Pasar lokal, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
+          {name: 'PesananQu', desc: '', path: require('../assets/pesananqu.png'), and: '', ios: '',
+          doc: 'Aplikasi E-commerce yang berpusat pada buah tangan atau biasa disebut oleh-oleh, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
         ]
 
     };
@@ -103,26 +112,35 @@ class LearnSomething extends Component {
           renderItem={({item, index}) =>  
             <View key={index} 
               style={[Css.LayoutShadow, {backgroundColor: '#fff', borderRadius:8, alignItems: 'center', 
-                marginHorizontal:12, marginBottom:24, width: 350, height: 300, justifyContent: 'center'}]}>
+                marginHorizontal:12, marginBottom:24, width: 350, height: 400, justifyContent: 'center'}]}>
               <Image
                 resizeMode={'contain'}
                 style={{width: 120,height: 120, alignItems:'center', marginBottom:16,}}
                 source={item.path}
               />
               <Text style={{fontWeight: '500', fontSize: 16, letterSpacing: .8, lineHeight: 19, marginBottom:16, textAlign: 'center'}}>{item.name}</Text>
-              <View style={{alignItems: 'center', justifyContent: 'center',width:'100%', flexDirection: 'row'}}>
-              {item.ios != '' &&
+              <Text style={{fontWeight:'400', fontSize: 14, textAlign: 'center', paddingHorizontal:16}}>{item.doc}</Text>
+              {/* <Text style={{fontWeight:'400', fontSize: 14, textAlign: 'center', paddingHorizontal:16}}>{tr().t('lorem')}</Text> */}
+              <View style={{alignItems: 'center', justifyContent: 'center',width:'100%', flexDirection: 'row', marginTop: 24}}>
+                {item.ios != '' &&
                 <TouchableOpacity onPress={() => { 
                     Linking.openURL(item.ios); 
                   }} activeOpacity={.7} style={{marginHorizontal: 6, borderColor: '#B42929',borderWidth:1, padding:8, borderRadius:4,}}>
                   <Fontisto name={'app-store'} style={{fontSize: 16,  color:'#B42929'}}/> 
                 </TouchableOpacity>
                 }
+                {item.and != '' &&
                 <TouchableOpacity onPress={() => { 
                     Linking.openURL(item.and); 
                   }} activeOpacity={.7} style={{marginHorizontal: 6, borderColor: '#B42929',borderWidth:1, padding:8, borderRadius:4,}}>
                   <Ionicons name={'logo-google-playstore'} style={{fontSize: 16,  color:'#B42929'}}/> 
                 </TouchableOpacity>
+                }
+                {item.and == '' && item.ios =='' &&
+                <TouchableOpacity disabled style={{marginHorizontal: 6, borderColor: '#B42929',borderWidth:1, padding:8, borderRadius:4, opacity:.6}}>
+                  <Text style={{fontSize: 14,  color:'#B42929'}}>{tr().t('develop')}</Text> 
+                </TouchableOpacity>
+                }
               </View>
             </View>
           } 

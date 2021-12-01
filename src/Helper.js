@@ -15,7 +15,9 @@ export const tr = ( ) => {
             "Portofolio": 'Portofolio',
             "iosstore": 'Available on the app store',
             "playstore": 'Available on the play store',
-            "skills": 'Skills'
+            "skills": 'Skills',
+            "develop": "in development",
+            "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         },
         id:{ 
             "title1": "React Naitve (Android & IOS) Developer",
@@ -25,7 +27,9 @@ export const tr = ( ) => {
             "Portofolio": 'Portofolio',
             "iosstore": 'Tersedia di AppStore',
             "playstore": 'Tersedia di Playstore',
-            "skills": 'Keterampilan'
+            "skills": 'Keterampilan',
+            "develop": "dalam pengembangan",
+            "lorem": "Lorem Ipsum hanyalah teks tiruan dari industri percetakan dan penyusunan huruf. Lorem Ipsum telah menjadi teks dummy standar industri sejak tahun 1500-an"
         }
     };
     return I18n
