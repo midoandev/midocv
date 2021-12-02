@@ -49,10 +49,9 @@ class LearnSomething extends Component {
             <MobileExpletion />
           </View>
           
-          <View style={{flexDirection: 'row', justifyContent:'space-between', paddingLeft:24, paddingRight:16,
-            paddingVertical: 16, alignItems: 'center'}}>
+          <View style={{flexDirection: 'row', justifyContent:'space-between', padding:24, marginTop:24, alignItems: 'center', flex:1}}>
               <Logoarm/>
-              <View style={{ flexDirection: 'row', justifyContent:'center', paddingHorizontal:12 }}> 
+              <View style={{ flexDirection: 'row', justifyContent:'center',   }}> 
           
                   <TouchableOpacity disabled={st.tab==0}
                     onPress={() => {
@@ -99,27 +98,27 @@ class LearnSomething extends Component {
         </View> */}
 
 
-        <View style={{flex:1, alignItems: 'center', justifyContent: 'center', paddingVertical:80}}>
+        <View style={{flex:1, alignItems: 'center', justifyContent: 'center', paddingVertical:40}}>
           <IconPortopolio/>
           <Text style={{fontWeight: '500', fontSize: 24, lineHeight:32, marginTop:16, letterSpacing:1, marginBottom:24, textAlign: 'center'}}>{tr().t('Portofolio')}</Text>
         </View>
 
         <FlatList
-          contentContainerStyle={{justifyContent: 'center',
-            flexDirection: 'row', flexWrap: 'wrap', }}
+          contentContainerStyle={{justifyContent: 'center', flex:1,
+            flexDirection: 'row', flexWrap: 'wrap', backgroundColor:'#000' }}
           data={st.recent} 
           keyExtractor={item=> item.name}
           renderItem={({item, index}) =>  
             <View key={index} 
               style={[Css.LayoutShadow, {backgroundColor: '#fff', borderRadius:8, alignItems: 'center', 
-                marginHorizontal:12, marginBottom:24, width: 350, height: 400, justifyContent: 'center'}]}>
+                marginHorizontal:12, marginBottom:24, width: 320, height: 400, justifyContent: 'center'}]}>
               <Image
                 resizeMode={'contain'}
-                style={{width: 120,height: 120, alignItems:'center', marginBottom:16,}}
+                style={{width: 100,height: 100, alignItems:'center', marginBottom:16,}}
                 source={item.path}
               />
-              <Text style={{fontWeight: '500', fontSize: 16, letterSpacing: .8, lineHeight: 19, marginBottom:16, textAlign: 'center'}}>{item.name}</Text>
-              <Text style={{fontWeight:'400', fontSize: 14, textAlign: 'center', paddingHorizontal:16}}>{item.doc}</Text>
+              <Text style={{fontWeight: '500', fontSize: 16, letterSpacing: .8, lineHeight: 19, marginBottom:20, textAlign: 'center'}}>{item.name}</Text>
+              <Text style={{fontWeight:'400', fontSize: 14,lineHeight:22, textAlign: 'center', paddingHorizontal:16, marginBottom:12}}>{item.doc}</Text>
               {/* <Text style={{fontWeight:'400', fontSize: 14, textAlign: 'center', paddingHorizontal:16}}>{tr().t('lorem')}</Text> */}
               <View style={{alignItems: 'center', justifyContent: 'center',width:'100%', flexDirection: 'row', marginTop: 24}}>
                 {item.ios != '' &&
@@ -137,7 +136,7 @@ class LearnSomething extends Component {
                 </TouchableOpacity>
                 }
                 {item.and == '' && item.ios =='' &&
-                <TouchableOpacity disabled style={{marginHorizontal: 6, borderColor: '#B42929',borderWidth:1, padding:8, borderRadius:4, opacity:.6}}>
+                <TouchableOpacity disabled style={{marginHorizontal: 6, borderColor: '#B42929',borderWidth:1, padding:8, borderRadius:4, opacity:.4}}>
                   <Text style={{fontSize: 14,  color:'#B42929'}}>{tr().t('develop')}</Text> 
                 </TouchableOpacity>
                 }
@@ -147,24 +146,26 @@ class LearnSomething extends Component {
         /> 
 
 
-        <FlatList
-          contentContainerStyle={{justifyContent: 'center',
-            flexDirection: 'row', flexWrap: 'wrap',  }}
-          data={st.constac} 
-          keyExtractor={item=> item.name}
-          renderItem={({item, index}) =>  
-            <TouchableOpacity key={index} onPress={() => { 
-                Linking.openURL(item.link); 
-              }} activeOpacity={.7}  
-              style={{alignItems:'center',borderColor: '#B42929', borderWidth:1, borderRadius:46, 
-                marginTop: 12, marginHorizontal:6, opacity:1, width: 46, height:46, justifyContent: 'center'}}>
-              <Feather name={item.icon} style={{fontSize: 16, fontWeight: '500', color:'#B42929'}}/> 
-            </TouchableOpacity>
-          } 
-        />  
 
-        <View style={{ alignItems: 'center', justifyContent: 'center', paddingVertical:40, marginTop: -20}}>
-          <View style={{flexDirection: 'row', alignItems:'center', justifyContent: 'center', opacity:.7}}>
+        <View style={{ alignItems: 'center', alignSelf:'auto', flex:1 }}>
+          
+          <FlatList
+            contentContainerStyle={{  alignItems:'center',
+              flexDirection: 'row', flexWrap: 'wrap', backgroundColor:'#000', paddingVertical: 12 }}
+            data={st.constac} 
+            keyExtractor={item=> item.name}
+            renderItem={({item, index}) =>  
+              <TouchableOpacity key={index} onPress={() => { 
+                  Linking.openURL(item.link); 
+                }} activeOpacity={.7}  
+                style={{alignItems:'center',borderColor: '#B42929', borderWidth:1, borderRadius:46, 
+                  marginVertical: 8, marginHorizontal:8, opacity:1, width: 46, height:46, justifyContent: 'center'}}>
+                <Feather name={item.icon} style={{fontSize: 16, fontWeight: '500', color:'#B42929'}}/> 
+              </TouchableOpacity>
+            } 
+          />  
+          
+          <View style={{flexDirection: 'row', opacity:.7}}>
             <Text style={{fontWeight: '300', letterSpacing:1, fontSize:14}}>Handcrafted by me </Text> 
             <FontAwesome5 name={'copyright'} size={14} color={'#B42929'}/>
             <Text style={{fontWeight: '300', letterSpacing:2, fontSize:14}}> agusrahmadimido</Text> 
@@ -177,8 +178,7 @@ class LearnSomething extends Component {
               source={require('../assets/expoicon.png')}
             />
           </View>
-        </View>
-        <Text>testdasdasda</Text>
+        </View> 
       </ScrollView>
     );
   }
