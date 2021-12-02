@@ -105,7 +105,7 @@ class LearnSomething extends Component {
 
         <FlatList
           contentContainerStyle={{justifyContent: 'center', flex:1,
-            flexDirection: 'row', flexWrap: 'wrap', backgroundColor:'#000' }}
+            flexDirection: 'row', flexWrap: 'wrap', }}
           data={st.recent} 
           keyExtractor={item=> item.name}
           renderItem={({item, index}) =>  
@@ -151,7 +151,7 @@ class LearnSomething extends Component {
           
           <FlatList
             contentContainerStyle={{  alignItems:'center',
-              flexDirection: 'row', flexWrap: 'wrap', backgroundColor:'#000', paddingVertical: 12 }}
+              flexDirection: 'row', flexWrap: 'wrap',paddingVertical: 12 }}
             data={st.constac} 
             keyExtractor={item=> item.name}
             renderItem={({item, index}) =>  
