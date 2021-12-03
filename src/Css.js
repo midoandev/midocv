@@ -164,12 +164,14 @@ import {
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
-    elevation: 5,
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    
+    elevation: 2,
+    backgroundColor: '#fff', 
+    borderRadius:8, 
   },
   textActive: {
     marginHorizontal:8, 
