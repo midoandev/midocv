@@ -1,5 +1,4 @@
- 
-import React, { Component } from 'react';
+import React, { useState, useRef } from 'react';  
 import { View, Text, Dimensions, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, Linking } from 'react-native'; 
 import Css from './Css';
 import {tr } from "./Helper";
@@ -11,84 +10,102 @@ import { StatusBar } from 'expo-status-bar';
 console.log('dimens', JSON.stringify(Dimensions.get('window')))
 const inMobile = width < 500
 
-class LearnSomething extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        tab: 0,
-        load: false,
-        constac: [
-          {name: 'midoandev',icon:'github', link: 'https://github.com/midoandev'},
-          {name: 'andev.mido@gmail.com',icon:'mail', link: 'mailto:andev.mido@gmail.com?subject=SendMail&body=Description'},
-          {name: 'agusrahmadimido',icon:'linkedin', link: 'https://www.linkedin.com/in/agusrahmadimido'},
-          {name: '@agusrahmadimido',icon:'twitter', link: 'https://www.twitter.com/agusrahmadimido'},
-          {name: 'agusrahmadimido',icon:'instagram', link: 'https://www.instagram.com/agusrahmadimido'},
-          // {name: '+6282248012727',icon:'phone-call', link: 'https://wa.me/6282248012727'}, 
-        ],
-        recent: [
-          {name: 'Paketindo', desc: '', path: require('../assets/paketindo.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindo', ios: 'https://apps.apple.com/id/app/paketindo/id1573115358?l=id', 
-            doc: 'Aplikasi dibidang pengiriman paket, aplikasi memiliki fitur mencari dan memilih lokasi dengan menggunakan API Google Map.'},
-          {name: 'Nakula Paketindo', desc: '', path: require('../assets/nakula.png'), and: 'https://play.google.com/store/apps/details?id=com.nakulapaketindo', ios: 'https://apps.apple.com/id/app/nakula-paketindo/id1589885237',
-            doc: 'Aplikasi driver untuk pengantaran, memiliki fitur berbagi lokasi secara realtime.'},
-          {name: 'Relasi Paketindo', desc: '', path: require('../assets/rm.png'), and: 'https://play.google.com/store/apps/details?id=com.rmclient', ios: 'https://apps.apple.com/id/app/relasi-paketindo/id1567033846',
-            doc: 'Aplikasi untuk menarik relasi untuk bekerja sama. Desain menu yang kompleks degan menggabungkan menu bawah dan samping'},
-          {name: 'Agen Paketindo', desc: '', path: require('../assets/agent.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindokuriragen', ios: '', 
-            doc: 'Aplikasi memiliki fitur yang sederhana seperti mengisikan formulir untuk bertransaksi'},
-          {name: 'Droppoint Paketindo', desc: '', path: require('../assets/dp.png'), and: 'https://play.google.com/store/apps/details?id=com.pektindokurirdroppoint', ios: '',
-           doc: 'Aplikasi memiliki fitur yang sederhana seperti mengisikan formulir untuk bertransaksi'},
-          {name: 'Pasarindo', desc: '', path: require('../assets/pasar.png'), and: 'https://play.google.com/store/apps/details?id=com.pasarindoapp', ios: '',
-            doc: 'Aplikasi E-commerce yang berpusat pada Pasar lokal, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
-          {name: 'PesananQu', desc: '', path: require('../assets/pesananqu.png'), and: '', ios: '',
-            doc: 'Aplikasi E-commerce yang berpusat pada buah tangan atau biasa disebut oleh-oleh, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
-        ],
-        skills: [
-          {title: 'React Native', sub: 'React'},
-          {title: 'React Redux', sub: 'React'},
-          {title: 'React Hook', sub: 'React'},
-          {title: 'Expo Web', sub: 'React'},
-          {title: 'Firebase Realtime Database', sub: 'React'},
-          {title: 'Firebase Cloud Message', sub: 'React'},
-          {title: 'Google Map', sub: 'React'}, 
-          {title: 'Google Map Autocomplete', sub: 'React'},
-          {title: 'Google Map Direction', sub: 'React'},
-          {title: 'Google Map Place', sub: 'React'},
-          {title: 'Java', sub: 'React'},
-          {title: 'Build with Gradle and XCode', sub: 'React'},
-          {title: 'Familiarity with REST and JSON', sub: 'React'},
-          {title: 'Experience with third-party libraries and APIs', sub: 'React'},
-          {title: 'Strong logical', sub: 'React'},
-          {title: 'Good Communication', sub: 'React'},
-          {title: 'Teamwork', sub: 'React'},
-          {title: 'English (Passive)', sub: 'React'},
-          {title: 'C++ (Beginner)', sub: 'React'},
-          {title: 'Git', sub: 'React'},
-        ]
+export default function MyApp() {
+    const [tab, settab] = useState(0);
+    const constac= [
+        {name: 'midoandev',icon:'github', link: 'https://github.com/midoandev'},
+        {name: 'andev.mido@gmail.com',icon:'mail', link: 'mailto:andev.mido@gmail.com?subject=SendMail&body=Description'},
+        {name: 'agusrahmadimido',icon:'linkedin', link: 'https://www.linkedin.com/in/agusrahmadimido'},
+        {name: '@agusrahmadimido',icon:'twitter', link: 'https://www.twitter.com/agusrahmadimido'},
+        {name: 'agusrahmadimido',icon:'instagram', link: 'https://www.instagram.com/agusrahmadimido'},
+        // {name: '+6282248012727',icon:'phone-call', link: 'https://wa.me/6282248012727'}, 
+      ]
+      const recent= [
+        {name: 'Paketindo', desc: '', path: require('../assets/paketindo.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindo', ios: 'https://apps.apple.com/id/app/paketindo/id1573115358?l=id', 
+          doc: 'Aplikasi dibidang pengiriman paket, aplikasi memiliki fitur mencari dan memilih lokasi dengan menggunakan API Google Map.'},
+        {name: 'Nakula Paketindo', desc: '', path: require('../assets/nakula.png'), and: 'https://play.google.com/store/apps/details?id=com.nakulapaketindo', ios: 'https://apps.apple.com/id/app/nakula-paketindo/id1589885237',
+          doc: 'Aplikasi driver untuk pengantaran, memiliki fitur berbagi lokasi secara realtime.'},
+        {name: 'Relasi Paketindo', desc: '', path: require('../assets/rm.png'), and: 'https://play.google.com/store/apps/details?id=com.rmclient', ios: 'https://apps.apple.com/id/app/relasi-paketindo/id1567033846',
+          doc: 'Aplikasi untuk menarik relasi untuk bekerja sama. Desain menu yang kompleks degan menggabungkan menu bawah dan samping'},
+        {name: 'Agen Paketindo', desc: '', path: require('../assets/agent.png'), and: 'https://play.google.com/store/apps/details?id=com.paketindokuriragen', ios: '', 
+          doc: 'Aplikasi memiliki fitur yang sederhana seperti mengisikan formulir untuk bertransaksi'},
+        {name: 'Droppoint Paketindo', desc: '', path: require('../assets/dp.png'), and: 'https://play.google.com/store/apps/details?id=com.pektindokurirdroppoint', ios: '',
+         doc: 'Aplikasi memiliki fitur yang sederhana seperti mengisikan formulir untuk bertransaksi'},
+        {name: 'Pasarindo', desc: '', path: require('../assets/pasar.png'), and: 'https://play.google.com/store/apps/details?id=com.pasarindoapp', ios: '',
+          doc: 'Aplikasi E-commerce yang berpusat pada Pasar lokal, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
+        {name: 'PesananQu', desc: '', path: require('../assets/pesananqu.png'), and: '', ios: '',
+          doc: 'Aplikasi E-commerce yang berpusat pada buah tangan atau biasa disebut oleh-oleh, memiliki fitur belanja dan berjualan. seperti aplikasi E-commerce lainnya.'},
+      ]
+      const skills= [
+        {title: 'React Native', sub: 'React'},
+        {title: 'React Redux', sub: 'React'},
+        {title: 'React Hook', sub: 'React'},
+        {title: 'Expo Web', sub: 'React'},
+        {title: 'Firebase Realtime Database', sub: 'React'},
+        {title: 'Firebase Cloud Message', sub: 'React'},
+        {title: 'Google Map', sub: 'React'}, 
+        {title: 'Google Map Autocomplete', sub: 'React'},
+        {title: 'Google Map Direction', sub: 'React'},
+        {title: 'Google Map Place', sub: 'React'},
+        {title: 'Java', sub: 'React'},
+        {title: 'Build with Gradle and XCode', sub: 'React'},
+        {title: 'Familiarity with REST and JSON', sub: 'React'},
+        {title: 'Experience with third-party libraries and APIs', sub: 'React'},
+        {title: 'Strong logical', sub: 'React'},
+        {title: 'Good Communication', sub: 'React'},
+        {title: 'Teamwork', sub: 'React'},
+        {title: 'English (Passive)', sub: 'React'},
+        {title: 'C++ (Beginner)', sub: 'React'},
+        {title: 'Git', sub: 'React'},
+      ]
 
+
+    const scrollViewRef = useRef(null);
+    const toNextPage = (h) => {
+        if (scrollViewRef.current !== null) {
+            scrollViewRef.current.scrollTo({
+                // x: width * (pageIndex + 1),
+                y: h,
+                animated: true,
+            });
+        }
     };
-  } 
-  render() {
-    let st = this.state
+    
     return (
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{backgroundColor: '#eee', paddingTop: inMobile? 24:0}} ref={ref => this.listViewRef = ref}>
+        <ScrollView showsVerticalScrollIndicator={false} ref={scrollViewRef}
+            scrollEventThrottle={0}
+            // stickyHeaderIndices={[1]}
+            // stickyHeaderHiddenOnScroll
+            // StickyHeaderComponent={() => {
+            //     return(
+            //         <View style={{width, backgroundColor: '#000'}}>
+            //             <Text>sdasd</Text>
+            //         </View>
+            //     )
+            // }}
+            // onScroll={event =>  console.log(event.nativeEvent.contentOffset.y)}
+            contentContainerStyle={{backgroundColor: '#eee', paddingTop: inMobile? 24:0}} >
         <View style={{minHeight: height}}>
           <View style={{ width, height, flex:1, position:'absolute', justifyContent: 'center', alignItems: 'center', opacity:.1}}>
             <MobileExpletion />
           </View>
           
           <View style={{flexDirection: 'row', justifyContent:'space-between', paddingHorizontal:24, marginTop:16, alignItems: 'center' }}>
-              <Logoarm/>
+              {/* <TouchableOpacity >onPress={() => toNextPage(871)}> */}
+                <Logoarm/>
+              {/* </TouchableOpacity> */}
               <View style={{ flexDirection: 'row', justifyContent:'center',  }}> 
           
-                  <TouchableOpacity disabled={st.tab==0}
+                  <TouchableOpacity disabled={tab==0}
                     onPress={() => {
                       tr().locale = 'en'
                       this.setState({tab: 0})
                     }}
-                  activeOpacity={.8} style={st.tab==0 ? Css.textActive : Css.textUnActive}>
-                  <Text style={{color:'#000', fontWeight:'500', opacity:st.tab==0?1:.6}}>EN</Text>
+                  activeOpacity={.8} style={tab==0 ? Css.textActive : Css.textUnActive}>
+                  <Text style={{color:'#000', fontWeight:'500', opacity:tab==0?1:.6}}>EN</Text>
                   </TouchableOpacity>
                   
-                  <TouchableOpacity disabled={st.tab==1}
+                  <TouchableOpacity disabled={tab==1}
                     onPress={() => {
                       tr().locale = 'id'
                       this.setState({tab: 1}) 
@@ -96,8 +113,8 @@ class LearnSomething extends Component {
                       // this.listViewRef.scrollTo({y: 10, animated: true});
                       // console.log('dsadas', Umurku())
                     }}
-                  activeOpacity={.8} style={st.tab==1 ? Css.textActive : Css.textUnActive}>
-                  <Text style={{color:'#000', fontWeight:'500', opacity:st.tab==1?1:.6}}>ID</Text>
+                  activeOpacity={.8} style={tab==1 ? Css.textActive : Css.textUnActive}>
+                  <Text style={{color:'#000', fontWeight:'500', opacity:tab==1?1:.6}}>ID</Text>
                   </TouchableOpacity>
                     
               </View>
@@ -139,9 +156,9 @@ class LearnSomething extends Component {
         </View> 
 
         <View style={[Css.LayoutShadow, {padding:40, flexWrap: 'wrap', flexDirection:'row', alignItems:'center', justifyContent:'center', marginBottom:80, marginHorizontal: 20 }]}>
-          {st.skills.map((item, index) => 
+          {skills.map((item, index) => 
             <View key={index}
-              style={{alignItems:'center',backgroundColor: '#E8DBDB',paddingHorizontal:16, paddingVertical:12, borderRadius:4, margin:10}}>
+              style={{alignItems:'center',backgroundColor: '#E8DBDB',paddingHorizontal:16, paddingVertical:12, borderRadius:8, margin:10}}>
               <Text style={{fontWeight: '400', fontSize: 18, lineHeight:19, letterSpacing:.7, textAlign: 'center'}}>{item.title}</Text>
             </View>
           )}
@@ -153,7 +170,7 @@ class LearnSomething extends Component {
         </View>
 
         <View style={{flexWrap: 'wrap', flexDirection:'row', alignItems:'center', justifyContent:'center', marginBottom:80, marginHorizontal:20 }}>
-          {st.recent.map((item, index) => 
+          {recent.map((item, index) => 
             <View key={index} 
               style={[Css.LayoutShadow, {alignItems: 'center', 
               width: 320, height: 360, justifyContent: 'center', margin:16}]}>
@@ -194,7 +211,7 @@ class LearnSomething extends Component {
           <Text style={{fontWeight: '400', fontSize: 14, opacity:.9, letterSpacing:.8, marginBottom:16}}>Social Media</Text> 
 
           <View style={{flexWrap: 'wrap', flexDirection:'row', }}>
-            {st.constac.map((item, index) => 
+            {constac.map((item, index) => 
               <TouchableOpacity key={index} onPress={() => { 
                     Linking.openURL(item.link); 
                   }} activeOpacity={.7}  
@@ -223,7 +240,4 @@ class LearnSomething extends Component {
         </View> 
       </ScrollView>
     );
-  }
 }
- 
-export default LearnSomething;

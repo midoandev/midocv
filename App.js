@@ -2,10 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import LearnSomething from './src/LearnSomething';
+import MyApp from './src/MyApp';
 // import ViewOnMobile from './src/ViewOnMobile';
 // import ViewOnWeb from './src/ViewOnWeb'; 
 export default function App() {
-  return <LearnSomething/>
+  return <MyApp/>
 }
 
 const styles = StyleSheet.create({
