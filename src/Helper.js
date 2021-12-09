@@ -20,7 +20,8 @@ export function WaktuKerja() {
 }
 
 export const tr = ( ) => { 
-    I18n.fallbacks = true; 
+    I18n.fallbacks = true;
+     
     I18n.defaultLocale = 'en'
     I18n.translations= {
         en: {
@@ -28,7 +29,7 @@ export const tr = ( ) => {
             "title2": "Write code, keep learning, and solve the problem", 
             "name": "Hi, I'm Mido. Nice to meet you.",
             "desc": "I started my career as a mobile developer since "+WaktuKerja()+" years ago at Yogyakarta. Starting from the Java programming language, making  apps using the Android Studio IDE, to switching to JavaScript, created cross-platform Android and IOS applications using the React Native framework. I'm perfectionis in positive and always learning to improve skills in developing mobile applications.",
-            "about": " About me, My full name is Agus Rakhmadi Mido, I was born in Tarakan "+Umurku()+" years ago. I received a bachelor's degree in computer science in 2018 and a master's degree in informatics technology in 2021 at the Yogyakarta Technological University. I'm a quiet person but I easily socialize, meet, discuss, and even work with people I just met. I'm also known as a humble person and good listener so that I understand the essense of the problem and provide the right solution.",
+            "about": " About me, My full name is Agus Rakhmadi Mido, I was born in Tarakan "+Umurku()+" years ago. I received a bachelor's degree in computer science in 2018 and a master's degree in informatics technology in 2021 at the University of Technology Yogyakarta. I'm a quiet person but I easily socialize, meet, discuss, and even work with people I just met. I'm also known as a humble person and good listener so that I understand the essense of the problem and provide the right solution.",
             "exp": "I worked at Imkom Academy as a Programmer from september 2018 until now. Imkom Academy is the place for courses in technology. I also work as a teacher in the Java programming language, especially Android-based mobile apps.",
             "Portofolio": 'Portofolio',
             "work": 'Work',
