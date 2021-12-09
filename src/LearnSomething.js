@@ -52,7 +52,7 @@ class LearnSomething extends Component {
           {title: 'Google Map Direction', sub: 'React'},
           {title: 'Google Map Place', sub: 'React'},
           {title: 'Java', sub: 'React'},
-          {title: 'Experience with Android Java and iOS Objective-C', sub: 'React'},
+          {title: 'Build with Gradle and XCode', sub: 'React'},
           {title: 'Familiarity with REST and JSON', sub: 'React'},
           {title: 'Experience with third-party libraries and APIs', sub: 'React'},
           {title: 'Strong logical', sub: 'React'},
